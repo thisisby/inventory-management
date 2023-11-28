@@ -25,13 +25,13 @@ func CORSMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		for key, value := range c.Request.Header {
-			if !helpers.IsArrayContains(strings.Split(constants.AllowHeader, ", "), key) {
-				logger.InfoF("ini header %s: %s\n", logrus.Fields{constants.LoggerCategory: constants.LoggerCategoryCORS}, key, value)
-				c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": "forbidden with CORS policy"})
-				return
-			}
-		}
+		//for key, value := range c.Request.Header {
+		//	if !helpers.IsArrayContains(strings.Split(constants.AllowHeader, ", "), key) {
+		//		logger.InfoF("ini header %s: %s\n", logrus.Fields{constants.LoggerCategory: constants.LoggerCategoryCORS}, key, value)
+		//		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": "forbidden with CORS policy"})
+		//		return
+		//	}
+		//}
 
 		if constants.AllowOrigin != "*" {
 			if !helpers.IsArrayContains(strings.Split(constants.AllowOrigin, ", "), c.Request.Host) {
